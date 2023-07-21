@@ -1,0 +1,243 @@
+/* VARIABLES */
+
+:root {
+    --primary-color: #071629;
+    --secondary-color: #FF6565;
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+    --color-gray: #D8D8D8;
+
+    --text-color: var(--color-white);
+    --text-color-black: var(--color-black);
+
+    --font-family-base: 'Source Sans Pro', helvetica, sans-serif;
+    --font-size-x-small: 12px;
+    --font-size-small: 14px;
+    --font-size-medium: 16px;
+    --font-size-large: 32px;
+    --font-size-x-large: 46px;
+  
+    --font-weight-regular: 400;
+    --font-weight-medium: 600;
+    --font-weight-bold: 700;
+  
+    --line-height-small: 1.2;
+    --line-height-base: normal;
+    --line-height-big: 26px;
+
+    /** BUTTON **/
+    --button-padding: 13px 31px;
+    --button-line-height: 18px;
+    --button-border-radius: 22px;
+
+    
+    /** MOTION **/
+    --transition-duration: .3s;
+}
+
+/* GLOBAL */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+
+}
+
+body {
+    color: var(--text-color);
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-base);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: var(--font-weight-bold);
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+a:hover {
+    color: var(--secondary-color);
+    transition-duration: var(--transition-duration);
+}
+
+.button {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    border-radius: var(--button-border-radius);
+    padding: var(--button-padding);
+    line-height: var(--button-line-height);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-bold);
+}
+
+.button:hover {
+    cursor: pointer;
+    color: var(--color-gray);
+    background-color: #e65959;
+    transition-duration: var(--transition-duration);
+    transition-property: color, background;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    /* max-width: 768px; */
+    margin: 0 auto;
+}
+
+/* SECTION */
+
+/* SECTION HERO */
+
+.section-hero {
+    background: url(./assets/images/headphones_hero_1.jpg);
+    background-position: 50%;
+    height: 100vh;
+    width: 100%;
+}
+
+/* NAVBAR */
+
+.header {
+    padding: 30px 0 0 0;
+    margin: 0 2rem;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+    height: 32px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.nav {
+    display: flex;
+    text-align: center;
+    font-size: var(--font-size-x-small);
+    font-weight: var(--font-weight-bold);
+}
+
+.nav-item {
+    margin-right: 40px;
+}
+
+.nav-toggle, .nav-toggle-label {
+    display: none;
+}
+
+/* HERO */
+
+.hero-body {
+    text-align: center;
+    max-width: 637px;
+    margin: 312px auto;
+}
+
+.section-hero h1 {
+    font-size: var(--font-size-large);
+    line-height: var(--line-height-base);
+}
+
+.section-hero h6 {
+    font-size: var(--font-size-medium);
+    line-height: var(--line-height-base);
+    padding-bottom: 40px;
+}
+
+.section-hero p {
+    padding-top: 50px;
+}
+
+/* MEDIA QUERIES */
+
+/* MOBILE */
+
+@media (width <= 560px) {
+
+    .header-container {
+        /* display: flex; */
+        flex-direction: column;
+        margin: 0 auto;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-item {
+        padding: 1rem 0;
+        margin: 0 auto;
+    }
+
+    .nav-toggle:checked ~ nav {
+        display: block;
+    }
+
+    .nav-toggle-label {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-toggle-label span,
+    .nav-toggle-label span::before,
+    .nav-toggle-label span::after {
+        content: '';
+        position: absolute;
+        background: var(--color-white);
+        height: 3px;
+        width: 2em;
+        border-radius: 9999px;
+        transition: 0.4s;
+    }
+
+    .nav-toggle-label span {
+        width: 1em;
+        transition: 0.2s;
+    }
+
+    .nav-toggle-label span::before {
+        top: -8px;
+    }
+
+    .nav-toggle-label span::after {
+        bottom: -8px;
+    }
+
+    .header-container:has(.nav-toggle:checked) .nav-toggle-label span {
+        background: transparent;
+    }
+
+    .header-container:has(.nav-toggle:checked) .nav-toggle-label span::before {
+        rotate: 45deg;
+        top: 1px;
+    }
+
+    .header-container:has(.nav-toggle:checked) .nav-toggle-label span::after {
+        rotate: -45deg;
+        top: 1px;
+    }
+}
